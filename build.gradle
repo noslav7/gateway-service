@@ -42,6 +42,9 @@ dependencyManagement {
 bootBuildImage {
     imageName = "${project.name}"
     environment = ["BP_JVM_VERSION": "17.*"]
+    docker {
+        host = "//./pipe/dockerDesktopLinuxEngine"
+    }
 }
 
 tasks.named('test') {
