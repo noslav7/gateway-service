@@ -23,6 +23,7 @@ repositories {
 
 ext {
     springCloudVersion ='2023.0.1'
+    lokiAppenderVersion ='1.5.1'
 }
 
 dependencies {
@@ -36,6 +37,8 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'org.springframework.retry:spring-retry'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    runtimeOnly "com.github.loki4j:loki-logback-appender:${lokiAppenderVersion}"
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

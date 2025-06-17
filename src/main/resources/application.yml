@@ -24,7 +24,7 @@ spring:
         initial-interval: 1000
         max-interval: 2000
         multiplier: 1.1
-      label: security_client
+      label: monitoring
 
     gateway:
       httpclient:
@@ -140,6 +140,7 @@ external:
   zipkin-endpoint: http://localhost:9411/api/v2/spans
   keycloak-url: ${KEYCLOAK_URL:http://keycloak:8080/realms/cloud-java}
   jwk-set-url: ${JWK_SET_URL:http://keycloak:8080/realms/cloud-java/protocol/openid-connect/certs}
+  loki-url: http://localhost:3100/loki/api/v1/push
 
 management:
   endpoints:
@@ -158,3 +159,9 @@ management:
   zipkin:
     tracing:
       endpoint: ${external.zipkin-endpoint}
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        all: true
